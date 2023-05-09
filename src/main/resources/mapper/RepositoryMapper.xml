@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuyuan.oracle.mapper.RepositoryMapper">
+
+    <resultMap id="BaseResultMap" type="com.liuyuan.oracle.model.entity.Repository">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="ownerId" column="owner_id" jdbcType="BIGINT"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+            <result property="languageId" column="language_id" jdbcType="INTEGER"/>
+            <result property="stars" column="stars" jdbcType="INTEGER"/>
+            <result property="forks" column="forks" jdbcType="INTEGER"/>
+            <result property="readme" column="readme" jdbcType="VARCHAR"/>
+            <result property="licenseId" column="license_id" jdbcType="INTEGER"/>
+            <result property="isPrivate" column="is_private" jdbcType="TINYINT"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,description,
+        owner_id,created_at,updated_at,
+        language_id,stars,forks,
+        readme,license_id,is_private,
+        is_deleted
+    </sql>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuyuan.oracle.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.liuyuan.oracle.model.entity.User">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="unionId" column="union_id" jdbcType="VARCHAR"/>
+            <result property="mpOpenId" column="mp_open_id" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="userAvatar" column="user_avatar" jdbcType="VARCHAR"/>
+            <result property="userProfile" column="user_profile" jdbcType="VARCHAR"/>
+            <result property="userRole" column="user_role" jdbcType="VARCHAR"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,email,password,
+        union_id,mp_open_id,nick_name,
+        user_avatar,user_profile,user_role,
+        created_at,updated_at,is_deleted
+    </sql>
+</mapper>

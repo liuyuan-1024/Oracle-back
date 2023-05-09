@@ -1,0 +1,13 @@
+#QQ邮箱配置
+spring:
+  mail:
+    protocol: smtps
+    #发送邮件服务器
+    host: smtp.qq.com
+    #发送邮件的邮箱地址
+    username: 603529064@qq.com
+    #客户端授权码，不是邮箱密码
+    password: cssyitwvmxlhbbfa
+    port: 465
+    # 默认编码
+    default-encoding: utf-8
