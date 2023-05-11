@@ -21,7 +21,7 @@ public interface RepositoryService extends IService<Repository> {
      * @param repository 仓库
      * @param add        是否为仓库创建请求
      */
-    void validRepository(Repository repository, boolean add);
+    void verifyRepository(Repository repository, boolean add);
 
     /**
      * 获取脱敏的仓库信息

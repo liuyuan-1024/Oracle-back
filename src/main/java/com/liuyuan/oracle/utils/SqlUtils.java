@@ -13,7 +13,7 @@ public class SqlUtils {
      * @param sortField
      * @return
      */
-    public static boolean validSortField(String sortField) {
+    public static boolean verifySortField(String sortField) {
         if (StringUtils.isBlank(sortField)) {
             return false;
         }

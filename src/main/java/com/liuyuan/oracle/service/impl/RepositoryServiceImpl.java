@@ -42,7 +42,7 @@ public class RepositoryServiceImpl extends ServiceImpl<RepositoryMapper, Reposit
 
 
     @Override
-    public void validRepository(Repository repository, boolean add) {
+    public void verifyRepository(Repository repository, boolean add) {
         if (repository == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -85,7 +85,7 @@ public class RepositoryServiceImpl extends ServiceImpl<RepositoryMapper, Reposit
         }
 
         // 参数校验
-        this.validRepository(repository, false);
+        this.verifyRepository(repository, false);
 
         Integer languageId = repository.getLanguageId();
         Integer licenseId = repository.getLicenseId();
@@ -131,7 +131,7 @@ public class RepositoryServiceImpl extends ServiceImpl<RepositoryMapper, Reposit
         queryWrapper.lambda().eq(licenseId != null, Repository::getLicenseId, licenseId);
         queryWrapper.lambda().like(StringUtils.isNotBlank(readme), Repository::getReadme, readme);
 
-        queryWrapper.orderBy(SqlUtils.validSortField(sortField), isAsc, sortField);
+        queryWrapper.orderBy(SqlUtils.verifySortField(sortField), isAsc, sortField);
 
         return queryWrapper;
     }

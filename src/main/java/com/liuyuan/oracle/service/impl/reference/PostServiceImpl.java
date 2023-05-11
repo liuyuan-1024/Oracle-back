@@ -14,14 +14,14 @@ import com.liuyuan.oracle.mapper.PostMapper;
 import com.liuyuan.oracle.mapper.PostThumbMapper;
 import com.liuyuan.oracle.model.dto.reference.post.PostEsDTO;
 import com.liuyuan.oracle.model.dto.reference.post.PostQueryRequest;
+import com.liuyuan.oracle.model.entity.User;
 import com.liuyuan.oracle.model.entity.reference.Post;
 import com.liuyuan.oracle.model.entity.reference.PostFavour;
 import com.liuyuan.oracle.model.entity.reference.PostThumb;
-import com.liuyuan.oracle.model.entity.User;
 import com.liuyuan.oracle.model.vo.PostVO;
 import com.liuyuan.oracle.model.vo.UserVO;
-import com.liuyuan.oracle.service.reference.PostService;
 import com.liuyuan.oracle.service.UserService;
+import com.liuyuan.oracle.service.reference.PostService;
 import com.liuyuan.oracle.utils.SqlUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -121,7 +121,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         queryWrapper.eq(ObjectUtils.isNotEmpty(id), "id", id);
         queryWrapper.eq(ObjectUtils.isNotEmpty(userId), "userId", userId);
         queryWrapper.eq("isDelete", false);
-        queryWrapper.orderBy(SqlUtils.validSortField(sortField), sortOrder.equals(CommonConstant.SORT_ORDER_ASC),
+        queryWrapper.orderBy(SqlUtils.verifySortField(sortField), sortOrder.equals(CommonConstant.SORT_ORDER_ASC),
             sortField);
         return queryWrapper;
     }
