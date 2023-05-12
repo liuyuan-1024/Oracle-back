@@ -65,7 +65,12 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
-
+        <!-- 腾讯云对象存储 COS -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.145</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -106,12 +111,7 @@
             <artifactId>easyexcel</artifactId>
             <version>3.3.1</version>
         </dependency>
-        <!-- 腾讯云对象存储 COS -->
-        <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
-            <version>5.6.145</version>
-        </dependency>
+
 
         <!-- elasticsearch 搜索和数据分析引擎 -->
         <dependency>
@@ -157,6 +157,8 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <!-- devtools依赖此配置（否则，devtools不生效）。 -->
+                    <fork>true</fork>
                 </configuration>
             </plugin>
             <plugin>
