@@ -20,6 +20,8 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     </properties>
     <dependencies>
+
+        <!-- =========================== start 项目基本依赖 =========================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -33,7 +35,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
 
         <!-- datasource -->
         <dependency>
@@ -64,12 +65,6 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
-        </dependency>
-        <!-- 腾讯云对象存储 COS -->
-        <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
-            <version>5.6.145</version>
         </dependency>
 
         <dependency>
@@ -104,15 +99,27 @@
             <version>${lombok-mapstruct-binding.version}</version>
         </dependency>
 
+        <!-- swagger接口文档 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!-- =========================== end 项目基本依赖 =========================== -->
 
+        <!-- =========================== start 项目特有依赖 =========================== -->
+        <!-- 腾讯云对象存储 COS -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.145</version>
+        </dependency>
         <!-- 阿里的Excel处理工具 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
             <version>3.3.1</version>
         </dependency>
-
-
         <!-- elasticsearch 搜索和数据分析引擎 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -124,14 +131,10 @@
             <artifactId>wx-java-mp-spring-boot-starter</artifactId>
             <version>4.4.9.B</version>
         </dependency>
-        <!-- swagger接口文档 -->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>
+        <!-- =========================== end 项目特有依赖 =========================== -->
 
 
+        <!-- =========================== start 开发依赖 =========================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -143,6 +146,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- =========================== end 开发依赖 =========================== -->
     </dependencies>
 
     <build>
