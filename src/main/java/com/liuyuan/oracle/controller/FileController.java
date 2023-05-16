@@ -1,13 +1,13 @@
 package com.liuyuan.oracle.controller;
 
 import cn.hutool.core.io.FileUtil;
+import com.liuyuan.oracle.common.file.UploadFileRequest;
 import com.liuyuan.oracle.common.response.BaseResponse;
 import com.liuyuan.oracle.common.response.ErrorCode;
 import com.liuyuan.oracle.common.response.ResultUtils;
 import com.liuyuan.oracle.constant.FileConstant;
 import com.liuyuan.oracle.exception.BusinessException;
 import com.liuyuan.oracle.manager.CosManager;
-import com.liuyuan.oracle.model.dto.file.UploadFileRequest;
 import com.liuyuan.oracle.model.entity.User;
 import com.liuyuan.oracle.model.enums.FileUploadBizEnum;
 import com.liuyuan.oracle.service.UserService;
@@ -41,10 +41,10 @@ public class FileController {
     /**
      * 文件上传
      *
-     * @param multipartFile     多个文件
+     * @param multipartFile     文件
      * @param uploadFileRequest 文件上传请求体
      * @param request           http请求
-     * @return
+     * @return 可访问地址
      */
     @PostMapping("/upload")
     public BaseResponse<String> uploadFile(@RequestPart("file") MultipartFile multipartFile,
@@ -54,7 +54,9 @@ public class FileController {
         if (fileUploadBizEnum == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        this.validFile(multipartFile, fileUploadBizEnum);
+        // 校验文件
+        fileUploadBizEnum.verifyFile(multipartFile, fileUploadBizEnum);
+        this.verifyFile(multipartFile, fileUploadBizEnum);
         User loginUser = userService.getLoginUser(request);
         // 文件目录：根据业务、用户来划分
         String uuid = RandomStringUtils.randomAlphanumeric(8);
@@ -85,11 +87,11 @@ public class FileController {
     /**
      * 校验文件
      *
-     * @param multipartFile 多个文件
+     * @param multipartFile     文件
      * @param fileUploadBizEnum 业务类型
      */
-    private void validFile(MultipartFile multipartFile, FileUploadBizEnum fileUploadBizEnum) {
-        // 文件大小
+    private void verifyFile(MultipartFile multipartFile, FileUploadBizEnum fileUploadBizEnum) {
+        // 文件大小 单位:字节 8bit = 1Byte 1024Byte=1KB
         long fileSize = multipartFile.getSize();
         // 文件后缀
         String fileSuffix = FileUtil.getSuffix(multipartFile.getOriginalFilename());

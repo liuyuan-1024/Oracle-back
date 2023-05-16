@@ -1,7 +1,8 @@
-package com.liuyuan.oracle.model.dto.file;
+package com.liuyuan.oracle.common.file;
+
+import lombok.Data;
 
 import java.io.Serializable;
-import lombok.Data;
 
 /**
  * 文件上传请求体
